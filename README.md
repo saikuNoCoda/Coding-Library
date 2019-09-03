@@ -4,7 +4,4 @@
 ## Miscellaneous
 
 ## Linear Algebra
-[Linear Algebra by Kenneth Haffman](http://www.math.pku.edu.cn/teachers/anjp/textbook.pdf)
-1. Fields <br>
-2. 
-
+1. [Determinant of Matrix](https://cp-algorithms.com/linear_algebra/determinant-gauss.html)
