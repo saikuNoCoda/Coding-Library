@@ -1,3 +1,7 @@
+// DINIC's ALGORITHM
+// MAXFLOW ALGORITHM
+// O(V^2 * E)
+
 #define ll long long int
 
 const ll MAXN = 205;
