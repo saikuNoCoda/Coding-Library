@@ -1,32 +1,35 @@
 struct pt{
     int x, y;
+
+    bool operator == (const pt &p) const {
+        return x == p.x and y == p.y;
+    }
 };
 
-bool cw(pt a, pt b, pt c)
+bool cw(const pt &a, const pt &b, const pt &c)
 {
     return (b.y-a.y)*(c.x-b.x) - (c.y-b.y)*(b.x-a.x) > 0;
 }
 
-bool acw(pt a, pt b, pt c)
+bool acw(const pt &a, const pt &b, const pt &c)
 {
     return (b.y-a.y)*(c.x-b.x) - (c.y-b.y)*(b.x-a.x) < 0;
 }
 
-bool comp(pt a, pt b)
+bool onSegment(const pt &a, const pt &b, const pt &c)
 {
-    if(a.x < b.x)
-        return 1;
-
-    if(a.x == b.x and a.y < b.y)
-        return 1;
-
-    return 0;
+    return (b.y-a.y)*(c.x-b.x) == (c.y-b.y)*(b.x-a.x);
 }
 
-void convex_hull(vector<pt> &v)
+bool comp(const pt &a, const pt &b)
+{
+    return (a.x < b.x) or (a.x == b.x and a.y < b.y);
+}
+
+vector<pt> convex_hull(vector<pt> v)
 {
     if(v.size() < 2){
-        return;
+        return v;
     }
 
     sort(v.begin(), v.end(), comp);
@@ -36,7 +39,7 @@ void convex_hull(vector<pt> &v)
     vector<pt> up, down;
     up.pb(left);
     down.pb(left);
-    
+
     for(int i=1;i<v.size();i++)
     {
         // if clockwise
@@ -68,9 +71,24 @@ void convex_hull(vector<pt> &v)
     for(int i=up.size()-2; i>0;i--){
         v.pb(up[i]);
     }
-    cout<<v.size()<<endl;
-    for(auto i: v)
+    
+    return v;
+}
+
+bool insideHull(const vector<pt>& hull, const pt &p)
+{
+    vector<pt> v = hull;
+    v.pb(p);
+    v = convex_hull(v);
+    return find(v.begin(), v.end(), p) == v.end();
+}
+
+int countInside(const vector<pt> &hull, const vector<pt> &v)
+{
+    int c = 0;
+    for(int i=0;i<v.size();i++)
     {
-        cout<<i.x<<" "<<i.y<<endl;
+        if(insideHull(hull, v[i])) c++;
     }
+    return c;
 }
