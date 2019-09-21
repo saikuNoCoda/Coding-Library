@@ -1,4 +1,6 @@
 
+//https://atcoder.jp/contests/abc141/submissions/7546518
+
 const ll MAXN = 1e5 + 10;
 ll z[MAXN];
 
