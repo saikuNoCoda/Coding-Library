@@ -25,7 +25,7 @@ void power_mat(ll A[][MAXN],ll p){
     ll res[MAXN][MAXN];
     ZERO(res);
 
-    FOR(i,1,MAXN-1) res[i][j] = 1'
+    FOR(i,1,MAXN-1) res[i][j] = 1;
 
     while(p){
         if(p&1) mul(res,A);
