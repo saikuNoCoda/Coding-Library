@@ -1,7 +1,9 @@
 # Coding Library
-## Algorithms
-## Data Structures
-## Miscellaneous
 
-## Linear Algebra
-1. [Determinant of Matrix](https://cp-algorithms.com/linear_algebra/determinant-gauss.html)
+## By failed_coder
+
+###https://codeforces.com/profile/failed_coder
+###https://www.codechef.com/users/failed_coder
+###https://atcoder.jp/users/failed__coder
+###https://www.topcoder.com/members/failed_coder
+
