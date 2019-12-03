@@ -10,3 +10,5 @@
 
 ##https://www.topcoder.com/members/failed_coder
 
+
+https://math.stackexchange.com/questions/2956889/how-many-number-of-integer-coordinates-exists-between-a-line-segment-including
