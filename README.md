@@ -12,3 +12,5 @@
 
 
 https://math.stackexchange.com/questions/2956889/how-many-number-of-integer-coordinates-exists-between-a-line-segment-including
+
+no of trees with n labeled vertices is n^(n-2) https://en.wikipedia.org/wiki/Cayley%27s_formula
