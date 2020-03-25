@@ -19,3 +19,5 @@ no of trees with n labeled vertices is n^(n-2) https://en.wikipedia.org/wiki/Cay
 https://proofwiki.org/wiki/Sum_of_r%2Bk_Choose_k_up_to_n
 
 Smallest Enclosing Circle https://codeforces.com/blog/entry/23554
+
+a+b=a⊕b+2×(a and b)=(a or b)+(a and b)
