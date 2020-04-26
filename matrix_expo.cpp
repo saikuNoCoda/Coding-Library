@@ -1,3 +1,5 @@
+// NORMAL MATRIX EXPO
+
 #define ll long long int
 #define ZERO(a) memset((a),0,sizeof((a)))
 
@@ -33,4 +35,19 @@ void power_mat(ll A[][MAXN],ll p){
         p >>= 1;
     }
     FOR(i,1,MAXN-1) FOR(j,1,MAXN-1) A[i][j] = res[i][j];
+}
+
+
+// MATRIX MUL MOD 2
+
+const int MAXN = 500;
+bitset<MAXN> A[MAXN],ans[MAXN],tmp[MAXN];
+
+void mat_mul_xor(bitset<MAXN> M1[MAXN],bitset<MAXN> M2[MAXN]){
+    bitset<MAXN> row[MAXN],col[MAXN];
+
+    FOR(i,0,MAXN-1) FOR(j,0,MAXN-1) row[i][j] = M1[i][j];
+    FOR(i,0,MAXN-1) FOR(j,0,MAXN-1) col[j][i] = M2[i][j];
+    
+    FOR(i,0,MAXN-1) FOR(j,0,MAXN-1) tmp[i][j] = ((row[i]&col[j]).count())&1;
 }
