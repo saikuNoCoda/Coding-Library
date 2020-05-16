@@ -1,4 +1,4 @@
-// https://www.codechef.com/viewsolution/25023296
+// https://www.codechef.com/viewsolution/33124403
 // https://forthright48.com/lucas-theorem-proof-and-applications/
 //  Given N, K and prime P, if we write N and K in base P form as:
 // N=n0+n1×P+n1×P2+⋯+nx×Px
