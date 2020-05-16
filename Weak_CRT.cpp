@@ -29,3 +29,28 @@ pair<int,int> CRT(vector<int> A,vector<int> M){
     if(a1 < 0) a1 += m1;
     return {a1,m1};
 }
+
+pair<int,int> SCRT(vector<int> A,vector<int> M){
+    if(A.size() != M.size()) return {-1,-1};
+
+    int n = A.size();
+
+    int a1 = A[0],m1 = M[0];
+
+    for(int i=1;i<n;i++){
+        int a2 = A[i],m2 = M[i];
+
+        int g = __gcd(m1,m2);
+        if(a1%g != a2%g) return {-1,-1};
+
+        int p,q;
+        extended_euclidean(m1/g,m2/g,p,q);
+        int mod = m1/g *m2;
+        int x = ((a1*(m2/g)*q)%mod + (a2*(m1/g)*p)%mod)%mod; 
+        a1 = x;
+        if(a1 < 0) a1 += mod;
+        m1 = mod;
+    }
+    if(a1 < 0) a1 += m1;
+    return {a1,m1};
+}
