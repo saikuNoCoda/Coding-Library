@@ -1,5 +1,6 @@
 // https://www.hackerrank.com/contests/epiccode/challenges/square-array/copy-from/162270622
-
+// https://codeforces.com/blog/entry/77711
+// https://ideone.com/Pz4Yp1
 
 const int MAXN = 2e5 + 10;
 const int MOD = 1e9 + 7;
