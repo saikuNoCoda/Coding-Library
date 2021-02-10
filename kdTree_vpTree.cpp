@@ -82,4 +82,75 @@ void nearestNeighbor(nodePtr node,point q,int &ans){
     }
 }
 
+
+
+struct vpNode {
+    int threshold;
+    pair<int,int> center;
+    vpNode *left, *right;
+};
+
+typedef vpNode *nodePtr;
+
+int n,ans;
+pair<int,int> pts[MAXN],arr[MAXN];
+nodePtr root;
+
+int squaredDistance(pair<int,int> a,pair<int,int> b){
+    return (a.first-b.first)*(a.first-b.first) + (a.second-b.second)*(a.second-b.second);
+}
+
+struct cmpPoints{
+    pair<int,int> a;
+    cmpPoints() {}
+    cmpPoints(pair<int,int> p): a(p) {}
+    bool operator () (const pair<int,int> &x,const pair<int,int> &y) const {
+        return squaredDistance(a,x)<squaredDistance(a,y);
+    }
+};
+
+void build(nodePtr &node,int s,int e){
+    if(s > e){
+        node = NULL;
+        return;
+    }
+
+    node = new vpNode();
+
+    if(s == e){
+        node->threshold = 0;
+        node->center=arr[s];
+        node->left = NULL;
+        node->right = NULL;
+        return;
+    }
+
+    int pos = s+rand()%(e-s+1);
+    swap(arr[s],arr[pos]);
+    node->center = arr[s];
+    sort(arr+s+1,arr+e+1,cmpPoints(arr[s]));
+    node->threshold = squaredDistance(arr[s],arr[(s+e)>>1]);
+    build(node->left,s,(s+e)>>1);
+    build(node->right,((s+e)>>1)+1,e);
+}
+
+void query(nodePtr &node,pair<int,int> q,int &ans){
+    if(node == NULL) return;
+    if(node->center != q) ans = min(ans,squaredDistance(node->center,q));
+    if(node->left == NULL && node->right == NULL) return;
+
+    if(squaredDistance(q,node->center) <= node->threshold){
+        query(node->left,q,ans);
+        if(sqrt(squaredDistance(node->center,q)) + sqrt(ans) > sqrt(node->threshold)){
+            query(node->right,q,ans);
+        }
+    }else {
+        query(node->right,q,ans);
+        if(sqrt(squaredDistance(node->center,q))- sqrt(ans)<sqrt(node->threshold)){
+            query(node->left,q,ans);
+        }
+    }
+}
+
+
 // https://www.spoj.com/problems/FAILURE/
